@@ -98,7 +98,15 @@ public class CombatOverlay extends Overlay
 
 	private String getCombatRange(String text)
 	{
-		int wildernessLevel = Integer.valueOf(text.replace("Level: ", ""));
+		int wildernessLevel;
+		try
+		{
+			wildernessLevel = Integer.valueOf(text.replace("Level: ", ""));
+		}
+		catch (Exception e)
+		{
+			wildernessLevel = 0;
+		}
 		int combat = client.getLocalPlayer().getCombatLevel();
 		int minimum = (combat - wildernessLevel) <= 3 ? 3 : combat - wildernessLevel;
 		int maximum = (combat + wildernessLevel) >= 126 ? 126 : combat + wildernessLevel;

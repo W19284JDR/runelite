@@ -45,4 +45,15 @@ public interface TeamCapesConfig extends Config
 	{
 		return 1;
 	}
+
+	@ConfigItem(
+			position = 1,
+			keyName = "customTeamNames",
+			name = "Team Cape Names",
+			description = "Displays custom team names.The format is cape#=TEAM NAME (comma seperated) Example: \"26=IR,30=FOE\""
+	)
+	default String getCustomTeamNames()
+	{
+		return "";
+	}
 }

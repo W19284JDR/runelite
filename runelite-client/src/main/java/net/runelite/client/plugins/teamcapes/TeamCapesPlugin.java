@@ -26,10 +26,10 @@ package net.runelite.client.plugins.teamcapes;
 
 import java.time.temporal.ChronoUnit;
 import java.util.Comparator;
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.HashMap;
 import java.util.stream.Collectors;
 import javax.inject.Inject;
 import com.google.inject.Provides;
@@ -43,8 +43,7 @@ import net.runelite.client.task.Schedule;
 import net.runelite.client.ui.overlay.Overlay;
 
 @PluginDescriptor(
-	name = "Team Capes",
-	enabledByDefault = false
+		name = "Team capes"
 )
 public class TeamCapesPlugin extends Plugin
 {
@@ -79,8 +78,8 @@ public class TeamCapesPlugin extends Plugin
 	}
 
 	@Schedule(
-		period = 1800,
-		unit = ChronoUnit.MILLIS
+			period = 1800,
+			unit = ChronoUnit.MILLIS
 	)
 	public void update()
 	{
@@ -108,12 +107,12 @@ public class TeamCapesPlugin extends Plugin
 
 		// Sort teams by value in descending order and then by key in ascending order, limited to 5 entries
 		teams = teams.entrySet().stream()
-					.sorted(
+				.sorted(
 						Comparator.comparing(Map.Entry<Integer, Integer>::getValue, Comparator.reverseOrder())
 								.thenComparingInt(Map.Entry::getKey)
-					)
-					.limit(5)
-					.collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (e1, e2) -> e1, LinkedHashMap::new));
+				)
+				.limit(5)
+				.collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (e1, e2) -> e1, LinkedHashMap::new));
 	}
 
 	public Map<Integer, Integer> getTeams()

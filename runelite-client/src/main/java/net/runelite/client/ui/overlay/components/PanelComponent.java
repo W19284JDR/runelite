@@ -67,6 +67,15 @@ public class PanelComponent implements LayoutableRenderableEntity
 
 	private final Dimension childDimensions = new Dimension();
 
+	@Setter
+	private int width = 140;
+
+	// Getter for the width, can be useful for formatting/positioning
+	public int getWidth()
+	{
+		return width;
+	}
+
 	@Override
 	public Dimension render(Graphics2D graphics)
 	{
